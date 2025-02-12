@@ -1,11 +1,20 @@
 import { PolarAngleAxis, PolarGrid, PolarRadiusAxis, Radar, RadarChart as RechartsRadarChart } from "recharts";
 import { CustomTick } from "./CustomTick.tsx";
 
-export const RadarChart = ({ statsData }: { statsData: { stat: string; value: number }[] }) => (
+const statsData = [
+	{ stat: "CON", value: 0 },
+	{ stat: "AGL", value: 0 },
+	{ stat: "LCK", value: 0 },
+	{ stat: "INT", value: 0 },
+	{ stat: "WIL", value: 0 },
+	{ stat: "STR", value: 0 },
+];
+
+export const RadarChart = () => (
 	<div className="flex justify-center items-center h-full">
 		<RechartsRadarChart
-			width={400}
-			height={400}
+			width={390}
+			height={390}
 			cx="50%"
 			cy="50%"
 			outerRadius="57%"
@@ -17,9 +26,9 @@ export const RadarChart = ({ statsData }: { statsData: { stat: string; value: nu
 				tick={CustomTick}
 			/>
 			<PolarRadiusAxis
-				domain={[-1, 6]}
+				domain={[-1, 10]}
 				tick={{ fill: "#888", fontSize: 12, dx: -6, dy: 2, textAnchor: "middle" }}
-				ticks={[0, 1, 2, 3, 4, 5, 6]}
+				ticks={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
 				angle={90}
 				stroke="#d4d4d4"
 			/>

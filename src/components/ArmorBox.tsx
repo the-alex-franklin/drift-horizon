@@ -12,7 +12,7 @@ export const ArmorBox = ({ label }: { label: string }) => (
 					<span className="absolute -top-2 left-2 bg-white px-1 text-xs font-medium text-gray-600">
 						{subLabel}
 					</span>
-					<div className="w-full h-24 text-sm border border-gray-300 rounded-md p-2" />
+					<div className="w-full h-8 text-sm border border-gray-300 rounded-md p-2" />
 				</div>
 			))}
 		</div>
