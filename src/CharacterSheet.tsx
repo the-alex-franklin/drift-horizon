@@ -1,5 +1,4 @@
-import "./App.css";
-import "virtual:windi.css";
+import "./CharacterSheet.module.css";
 import { PolarAngleAxis, PolarGrid, PolarRadiusAxis, Radar, RadarChart as RechartsRadarChart } from "recharts";
 import { CustomTick } from "./components/CustomTick.tsx";
 
@@ -12,7 +11,7 @@ const statsData = [
 	{ stat: "LCK", value: 0 },
 ];
 
-const CharacterSheet = () => {
+export const CharacterSheet = () => {
 	return (
 		<div className="w-screen flex flex-col items-center justify-center bg-gray-[900]">
 			<div className="p-2 gap-2 flex flex-col bg-white text-black w-[8.5in] h-[11in] border border-gray-300 shadow-md">
@@ -20,7 +19,7 @@ const CharacterSheet = () => {
 					Drift Horizon Character Sheet
 				</h1>
 
-				<div className="flex flex-col gap-2 p-2">
+				<div className="flex flex-col gap-2 px-2">
 					<div className="flex gap-2 justify-between items-start">
 						<div className="flex flex-col gap-2 items-center">
 							<RechartsRadarChart
@@ -56,17 +55,24 @@ const CharacterSheet = () => {
 							</RechartsRadarChart>
 						</div>
 						<div className="w-1/3 flex flex-col gap-2 pt-4">
-							<div className="w-full grid grid-cols-3 justify-between p-3 gap-2 border border-gray-300 rounded-md focus:outline-none">
-								{["HP", "AP", "MP", "DR", "AR", "BR"].map((label) => (
-									<div className="relative h-16 flex-1 flex flex-col items-center justify-center bg-white p-2 rounded-lg border shadow-sm">
-										<span className="absolute -top-2 left-1 bg-white px-1 text-xs font-medium text-gray-600">
-											{label}
-										</span>
-									</div>
-								))}
+							<div className="w-full grid grid-cols-3 gap-2 p-3 border border-gray-300 rounded-md whitespace-nowrap">
+								{["Hit Points", "Action Points", "Effort Points", "Dodge Rating", "Armor Rating", "Barrier Rating"].map(
+									(
+										label,
+									) => (
+										<div
+											key={label}
+											className="relative h-16 flex-1 flex flex-col items-center justify-center bg-white p-2 rounded-lg border shadow-sm"
+										>
+											<span className="absolute -top-2 left-1 bg-white px-1 text-xs font-medium text-gray-600">
+												{label}
+											</span>
+										</div>
+									),
+								)}
 							</div>
 
-							<div className="w-full flex flex-col gap-2 text-left">
+							<div className="w-full flex flex-col gap-2">
 								<div className="flex flex-col items-start border border-gray-300 rounded-lg p-3 shadow-sm bg-white w-full">
 									<div className="w-full relative mb-2">
 										<span className="absolute -top-2 left-2 bg-white px-1 text-xs font-medium text-gray-600">
@@ -114,29 +120,30 @@ const CharacterSheet = () => {
 						{Array.from(
 							{ length: 6 },
 							(_, index) => (
-								<div className="relative h-36 bg-white border border-gray-300 rounded-lg p-1 shadow-sm flex flex-col items-center justify-end text-center">
+								<div
+									key={index}
+									className="relative h-32 bg-white border border-gray-300 rounded-lg p-1 shadow-sm flex flex-col items-center justify-end text-center"
+								>
 									<span className="absolute -top-2 left-2 font-medium text-xs text-gray-600 bg-white">
 										Ability {index + 1}
 									</span>
-									{["AP", "CD"].map((label) => (
-										<div key={label} className="font-mono flex justify-between w-full text-xs mb-1">
-											<span>{label}:</span>
-											{Array.from({ length: 6 }).map((_, idx) => (
-												<div key={idx} className="w-4 h-4 border border-gray-600 rounded-full bg-white"></div>
-											))}
-										</div>
-									))}
+									<div className="font-mono flex justify-between w-full text-xs mb-1">
+										<span>CD:</span>
+										{Array.from({ length: 6 }).map((_, idx) => (
+											<div key={idx} className="w-4 h-4 border border-gray-600 rounded-full bg-white"></div>
+										))}
+									</div>
 								</div>
 							),
 						)}
 					</div>
 				</div>
 
-				<div className="flex flex-1 gap-4 p-2">
+				<div className="flex flex-1 gap-2 px-2">
 					{["Inventory", "Notes"].map((label) => (
-						<div className="relative flex-1 border rounded-lg shadow-sm shadow-black flex flex-col h-full">
+						<div key={label} className="relative flex-1 border rounded-lg shadow-sm shadow-black flex flex-col h-full">
 							<div className="absolute -top-3 left-2 bg-white px-2 text-gray-600">{label}</div>
-							<div className="w-full mt-4 border-none focus:outline-none text-sm resize-none" />
+							<div className="w-full mt-4 border-none text-sm resize-none" />
 						</div>
 					))}
 				</div>
@@ -144,5 +151,3 @@ const CharacterSheet = () => {
 		</div>
 	);
 };
-
-export default CharacterSheet;

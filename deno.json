@@ -7,6 +7,9 @@
 	},
 	"nodeModulesDir": "auto",
 	"compilerOptions": {
+		"strict": true,
+		"strictNullChecks": true,
+		"noUncheckedIndexedAccess": true,
 		"lib": ["ES2020", "DOM", "DOM.Iterable"],
 		"jsx": "react-jsx",
 		"jsxImportSource": "react",
@@ -19,6 +22,7 @@
 		"@vitejs/plugin-react-swc": "npm:@vitejs/plugin-react-swc@^3.7.1",
 		"react": "npm:react@^18.3.1",
 		"react-dom": "npm:react-dom@^18.3.1",
+		"react-router-dom": "npm:react-router-dom@^7.1.5",
 		"recharts": "npm:recharts@^2.15.1",
 		"vite": "npm:vite@^6.0.1",
 		"vite-plugin-windicss": "npm:vite-plugin-windicss@^1.9.4",
