@@ -8,7 +8,7 @@ export default defineConfig({
 	plugins: [
 		deno(),
 		react(),
-		// @ts-ignore
+		// @ts-ignore -
 		windi(),
 	],
 });
