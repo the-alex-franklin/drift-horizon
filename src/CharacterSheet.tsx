@@ -1,4 +1,3 @@
-import "./CharacterSheet.module.css";
 import { PolarAngleAxis, PolarGrid, PolarRadiusAxis, Radar, RadarChart as RechartsRadarChart } from "recharts";
 import { CustomTick } from "./components/CustomTick.tsx";
 
