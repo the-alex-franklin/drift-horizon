@@ -4,15 +4,12 @@ import { RandomLootGenerator } from "./RandomLootGenerator.tsx";
 
 export default function AppRouter() {
 	return (
-		<>
-			<p>Hello world</p>
-			<BrowserRouter>
-				<Routes>
-					<Route path="/sheet" element={<CharacterSheet />} />
-					<Route path="/loot" element={<RandomLootGenerator />} />
-					<Route path="*" element={<Navigate to="/loot" />} />
-				</Routes>
-			</BrowserRouter>
-		</>
+		<BrowserRouter>
+			<Routes>
+				<Route path="/sheet" element={<CharacterSheet />} />
+				<Route path="/loot" element={<RandomLootGenerator />} />
+				<Route path="*" element={<Navigate to="/sheet" />} />
+			</Routes>
+		</BrowserRouter>
 	);
 }

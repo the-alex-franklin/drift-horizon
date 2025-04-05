@@ -44,13 +44,12 @@ class LootGenerator {
 
 				// Roll for multiples with diminishing probabilities
 				while (Math.random() < chance) {
-					if (loot[item.name]) loot[item.name]!.quantity++; // Increment quantity if already exists
-					else {
-						loot[item.name] = {
-							quantity: 1,
-							item_value: value,
-						};
-					}
+					loot[item.name] ??= {
+						quantity: 0,
+						item_value: value,
+					};
+
+					loot[item.name]!.quantity++;
 
 					total_value += value; // Add the value to the total
 
@@ -110,11 +109,13 @@ const loot_table: LootTable = [
 // Create the loot generator
 export const loot_generator = new LootGenerator(loot_table);
 
-// Generate loot
-const loot = loot_generator.generateLoot(1500);
+if (import.meta.main) {
+	// Generate loot
+	const loot = loot_generator.generateLoot(1500);
 
-// Output the loot and its total value
-console.log("Generated Loot:", loot);
+	// Output the loot and its total value
+	console.log("Generated Loot:", loot);
 
-const loot_total = Object.values(loot).reduce((acc, { quantity, item_value }) => acc + (quantity * item_value), 0);
-console.log("Total Value:", loot_total);
+	const loot_total = Object.values(loot).reduce((acc, { quantity, item_value }) => acc + (quantity * item_value), 0);
+	console.log("Total Value:", loot_total);
+}

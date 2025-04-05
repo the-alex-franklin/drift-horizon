@@ -12,8 +12,8 @@ type PolarAngleAxisTickProps = {
 };
 
 export const CustomTick = ({ x, y, payload, cx, cy }: PolarAngleAxisTickProps) => {
-	const horizontalFactor = 1.3;
-	const verticalFactor = x === cx ? 1.35 : 1.25;
+	const horizontalFactor = 1.4;
+	const verticalFactor = x === cx ? 1.45 : 1.25;
 	const horizontalOffset = -30;
 	const verticalOffset = -37;
 	const deltaX = x - cx;
